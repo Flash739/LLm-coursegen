@@ -33,10 +33,10 @@ jobs:
             fi
 
             # Write secrets to .env file
-            echo "aws.accessKeyId=${{ secrets.AWS_ACCESS_KEY_ID }}" > .env
-            echo "aws.secretKey=${{ secrets.AWS_SECRET_KEY }}" >> .env
-            echo "spring.data.mongodb.uri=${{ secrets.SPRING_DATA_MONGODB_URI }}" >> .env
-            echo "huggface.token=${{ secrets.HUGGFACE_TOKEN }}" >> .env
+            echo "aws_accessKeyId=${{ secrets.AWS_ACCESS_KEY_ID }}" > .env
+            echo "aws_secretKey=${{ secrets.AWS_SECRET_KEY }}" >> .env
+            echo "spring_data_mongodb.uri=${{ secrets.SPRING_DATA_MONGODB_URI }}" >> .env
+            echo "huggface_token=${{ secrets.HUGGFACE_TOKEN }}" >> .env
 
             # Redeploy containers
             docker-compose down

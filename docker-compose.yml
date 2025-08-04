@@ -20,10 +20,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - aws.accessKeyId=${aws.accessKeyId}
-      - aws.secretKey=${aws.secretKey}
-      - spring.data.mongodb.uri=${spring.data.mongodb.uri}
-      - huggface.token=${huggface.token}
+      - aws_accessKeyId=${aws_accessKeyId}
+      - aws_secretKey=${aws_secretKey}
+      - spring_data_mongodb.uri=${spring_data.mongodb_uri}
+      - huggface_token=${huggface_token}
     restart: unless-stopped
     depends_on:
       - lowpriorityWorker
@@ -35,10 +35,10 @@ services:
       context: ./lowpriorityWorker
     container_name: lowpriorityWorker
     environment:
-      - aws.accessKeyId=${aws.accessKeyId}
-      - aws.secretKey=${aws.secretKey}
-      - spring.data.mongodb.uri=${spring.data.mongodb.uri}
-      - huggface.token=${huggface.token}
+      - aws_accessKeyId=${aws_accessKeyId}
+      - aws_secretKey=${aws_secretKey}
+      - spring_data_mongodb.uri=${spring_data.mongodb_uri}
+      - huggface_token=${huggface_token}
     restart: unless-stopped
 
   highpriority:
@@ -46,10 +46,10 @@ services:
       context: ./highpriority
     container_name: highpriority
     environment:
-      - aws.accessKeyId=${aws.accessKeyId}
-      - aws.secretKey=${aws.secretKey}
-      - spring.data.mongodb.uri=${spring.data.mongodb.uri}
-      - huggface.token=${huggface.token}
+      - aws_accessKeyId=${aws_accessKeyId}
+      - aws_secretKey=${aws_secretKey}
+      - spring_data_mongodb.uri=${spring_data.mongodb_uri}
+      - huggface_token=${huggface_token}
     restart: unless-stopped
 
   coursegenerationworker:
@@ -57,8 +57,8 @@ services:
       context: ./CourseGenerationWorker
     container_name: coursegenerationworker
     environment:
-      - aws.accessKeyId=${aws.accessKeyId}
-      - aws.secretKey=${aws.secretKey}
-      - spring.data.mongodb.uri=${spring.data.mongodb.uri}
-      - huggface.token=${huggface.token}
+      - aws_accessKeyId=${aws_accessKeyId}
+      - aws_secretKey=${aws_secretKey}
+      - spring_data_mongodb.uri=${spring_data.mongodb_uri}
+      - huggface_token=${huggface_token}
     restart: unless-stopped
