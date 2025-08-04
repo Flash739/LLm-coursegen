@@ -1,0 +1,43 @@
+name: Build & Deploy Fullstack
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Clone or pull latest repo
+            if [ -d "LLMCourse" ]; then
+              cd LLMCourse
+              git pull origin main
+            else
+              git clone https://github.com/Flash739/LLm-coursegen.git LLMCourse
+              cd LLMCourse
+            fi
+
+            # Write secrets to .env file
+            echo "aws.accessKeyId=${{ secrets.AWS_ACCESS_KEY_ID }}" > .env
+            echo "aws.secretKey=${{ secrets.AWS_SECRET_KEY }}" >> .env
+            echo "spring.data.mongodb.uri=${{ secrets.SPRING_DATA_MONGODB_URI }}" >> .env
+            echo "huggface.token=${{ secrets.HUGGFACE_TOKEN }}" >> .env
+
+            # Redeploy containers
+            docker-compose down
+            docker-compose up -d --build

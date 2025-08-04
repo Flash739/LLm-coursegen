@@ -9,7 +9,7 @@ services:
       - "3000:3000"
     restart: unless-stopped
     environment:
-      - REACT_APP_BACKEND_URL=http://coursegen-backend:8080
+      - REACT_APP_API_URL=http://13.235.195.48:8080
     depends_on:
       - coursegen-backend
 
@@ -19,6 +19,11 @@ services:
     container_name: coursegen-backend
     ports:
       - "8080:8080"
+    environment:
+      - aws.accessKeyId=${aws.accessKeyId}
+      - aws.secretKey=${aws.secretKey}
+      - spring.data.mongodb.uri=${spring.data.mongodb.uri}
+      - huggface.token=${huggface.token}
     restart: unless-stopped
     depends_on:
       - lowpriorityWorker
@@ -29,16 +34,31 @@ services:
     build:
       context: ./lowpriorityWorker
     container_name: lowpriorityWorker
+    environment:
+      - aws.accessKeyId=${aws.accessKeyId}
+      - aws.secretKey=${aws.secretKey}
+      - spring.data.mongodb.uri=${spring.data.mongodb.uri}
+      - huggface.token=${huggface.token}
     restart: unless-stopped
 
   highpriority:
     build:
       context: ./highpriority
     container_name: highpriority
+    environment:
+      - aws.accessKeyId=${aws.accessKeyId}
+      - aws.secretKey=${aws.secretKey}
+      - spring.data.mongodb.uri=${spring.data.mongodb.uri}
+      - huggface.token=${huggface.token}
     restart: unless-stopped
 
   coursegenerationworker:
     build:
       context: ./CourseGenerationWorker
     container_name: coursegenerationworker
+    environment:
+      - aws.accessKeyId=${aws.accessKeyId}
+      - aws.secretKey=${aws.secretKey}
+      - spring.data.mongodb.uri=${spring.data.mongodb.uri}
+      - huggface.token=${huggface.token}
     restart: unless-stopped
