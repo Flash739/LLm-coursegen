@@ -22,7 +22,7 @@ services:
     environment:
       - aws_accessKeyId=${aws_accessKeyId}
       - aws_secretKey=${aws_secretKey}
-      - spring_data_mongodb.uri=${spring_data.mongodb_uri}
+      - spring_data_mongodb_uri=${spring_data_mongodb_uri}
       - huggface_token=${huggface_token}
     restart: unless-stopped
     depends_on:
@@ -37,7 +37,7 @@ services:
     environment:
       - aws_accessKeyId=${aws_accessKeyId}
       - aws_secretKey=${aws_secretKey}
-      - spring_data_mongodb.uri=${spring_data.mongodb_uri}
+      - spring_data_mongodb_uri=${spring_data_mongodb_uri}
       - huggface_token=${huggface_token}
     restart: unless-stopped
 
@@ -48,7 +48,7 @@ services:
     environment:
       - aws_accessKeyId=${aws_accessKeyId}
       - aws_secretKey=${aws_secretKey}
-      - spring_data_mongodb.uri=${spring_data.mongodb_uri}
+      - spring_data_mongodb_uri=${spring_data_mongodb_uri}
       - huggface_token=${huggface_token}
     restart: unless-stopped
 
@@ -59,6 +59,6 @@ services:
     environment:
       - aws_accessKeyId=${aws_accessKeyId}
       - aws_secretKey=${aws_secretKey}
-      - spring_data_mongodb.uri=${spring_data.mongodb_uri}
+      - spring_data_mongodb_uri=${spring_data_mongodb_uri}
       - huggface_token=${huggface_token}
     restart: unless-stopped
