@@ -26,14 +26,14 @@ services:
       - huggface_token=${huggface_token}
     restart: unless-stopped
     depends_on:
-      - lowpriorityWorker
+      - lowpriorityworker
       - highpriority
       - coursegenerationworker
 
-  lowpriorityWorker:
+  lowpriorityworker:
     build:
       context: ./lowpriorityWorker
-    container_name: lowpriorityWorker
+    container_name: lowpriorityworker
     environment:
       - aws_accessKeyId=${aws_accessKeyId}
       - aws_secretKey=${aws_secretKey}
