@@ -28,7 +28,7 @@ jobs:
               cd LLMCourse
               git pull origin main
             else
-              git clone https://github.com/Flash739/LLm-coursegen.git LLMCourse
+               git clone git@github.com:Flash739/LLm-coursegen.git LLMCourse
               cd LLMCourse
             fi
 
