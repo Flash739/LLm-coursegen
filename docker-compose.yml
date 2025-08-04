@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - REACT_APP_BACKEND_URL=http://coursegen-backend:8080
+    depends_on:
+      - coursegen-backend
+
+  coursegen-backend:
+    build:
+      context: ./coursegen-backend
+    container_name: coursegen-backend
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on:
+      - lowpriorityWorker
+      - highpriority
+      - coursegenerationworker
+
+  lowpriorityWorker:
+    build:
+      context: ./lowpriorityWorker
+    container_name: lowpriorityWorker
+    restart: unless-stopped
+
+  highpriority:
+    build:
+      context: ./highpriority
+    container_name: highpriority
+    restart: unless-stopped
+
+  coursegenerationworker:
+    build:
+      context: ./CourseGenerationWorker
+    container_name: coursegenerationworker
+    restart: unless-stopped

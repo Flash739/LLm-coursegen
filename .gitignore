@@ -1,0 +1,6 @@
+.env
+*.key
+*.pem
+target/
+build/
+node_modules/
