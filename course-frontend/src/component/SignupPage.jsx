@@ -14,7 +14,7 @@ const SignupPage = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, {
+      const res = await axios.post(`http://13.235.195.48:8080/auth/signup`, {
         name, email, password,
       });
       localStorage.setItem('token', res.data.token);
