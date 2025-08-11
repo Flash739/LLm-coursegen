@@ -6,7 +6,7 @@ services:
       context: ./course-frontend
     container_name: frontend
     ports:
-      - "3000:3000"
+      - "3000:80"
     restart: unless-stopped
     environment:
       - REACT_APP_API_URL=http://13.235.195.48:8080
