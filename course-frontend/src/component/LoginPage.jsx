@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { email, password });
+      const res = await axios.post(`http://13.235.195.48:8080/auth/login`, { email, password });
 
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userId', res.data.id);
