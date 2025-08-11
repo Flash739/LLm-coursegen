@@ -26,7 +26,7 @@ const SubsectionPage = () => {
 
     const fetchSubsection = async () => {
       try {
-        await instance.post(`${process.env.REACT_APP_API_URL}/api/course/highpriority`, {
+        await instance.post(`http://13.235.195.48:8080/api/course/highpriority`, {
           taskId,
           sectionTitle,
           subsectionTitle,
