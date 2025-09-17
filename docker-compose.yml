@@ -24,6 +24,8 @@ services:
       - aws_secretKey=${aws_secretKey}
       - spring_data_mongodb_uri=${spring_data_mongodb_uri}
       - huggface_token=${huggface_token}
+      - redis_password=${redis_password}
+      - open_ai_key=${open_ai_key}
     restart: unless-stopped
     depends_on:
       - lowpriorityworker
@@ -39,6 +41,7 @@ services:
       - aws_secretKey=${aws_secretKey}
       - spring_data_mongodb_uri=${spring_data_mongodb_uri}
       - huggface_token=${huggface_token}
+      - redis_password=${redis_password}
     restart: unless-stopped
 
   highpriority:
@@ -50,6 +53,7 @@ services:
       - aws_secretKey=${aws_secretKey}
       - spring_data_mongodb_uri=${spring_data_mongodb_uri}
       - huggface_token=${huggface_token}
+      - redis_password=${redis_password}
     restart: unless-stopped
 
   coursegenerationworker:
@@ -61,4 +65,5 @@ services:
       - aws_secretKey=${aws_secretKey}
       - spring_data_mongodb_uri=${spring_data_mongodb_uri}
       - huggface_token=${huggface_token}
+      - redis_password=${redis_password}
     restart: unless-stopped

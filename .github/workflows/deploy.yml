@@ -37,6 +37,9 @@ jobs:
             echo "aws_secretKey=${{ secrets.AWS_SECRET_KEY }}" >> .env
             echo "spring_data_mongodb_uri=${{ secrets.SPRING_DATA_MONGODB_URI }}" >> .env
             echo "huggface_token=${{ secrets.HUGGFACE_TOKEN }}" >> .env
+            echo "redis_password=${{ secrets.REDIS_PASSWORD }}" >> .env
+            echo "open_ai_key=${{ secrets.OPEN_AI_KEY }}" >> .env
+
 
             # Redeploy containers
             docker-compose down

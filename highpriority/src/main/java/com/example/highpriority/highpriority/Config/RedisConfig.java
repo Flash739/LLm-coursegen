@@ -14,13 +14,17 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig {
 
+    
+    @Value("${spring.redis.password}")
+    private String redis_password;
+
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
-        config.setHostName("redis-14433.c84.us-east-1-2.ec2.redns.redis-cloud.com");
-        config.setPort(14433);
+        config.setHostName("redis-14217.c241.us-east-1-4.ec2.redns.redis-cloud.com");
+        config.setPort(14217);
         config.setUsername("default");
-        config.setPassword(RedisPassword.of("Klgd0RGF5MUwPAFKqoVYjPtwEgR1u6jY"));
+        config.setPassword(RedisPassword.of(redis_password));
 
         LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
                 .build();
