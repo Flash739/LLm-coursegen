@@ -20,7 +20,6 @@ public class LlmClient {
     @Value("${huggface.token}")
     private String hfToken;
 
-    //private final String hfToken = "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";
     private final ObjectMapper mapper = new ObjectMapper();
 
     public LlmClient(WebClient.Builder builder) {
